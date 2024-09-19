@@ -1,0 +1,322 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins/Poppins-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(238, 238, 238);
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* First Page */
+.login-main {
+  display: flex;
+  background-color: white;
+  padding: 1rem 4rem;
+  border-radius: 0.8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image-main-login-container {
+  margin-top: 3rem;
+}
+
+.image-main-login-container img {
+  height: 400px;
+  margin-right: 4rem;
+}
+
+h1 {
+  color: red;
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.login-info {
+  flex: 1;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+form input {
+  padding: 0.7rem;
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  border: 1px solid rgba(128, 128, 128, 0.371);
+
+}
+
+form input:focus {
+  border: 2px solid rgb(112, 179, 255) ;
+  outline: none;
+}
+
+form label {
+  font-size: 0.9rem;
+}
+
+form button {
+  background-color: red;
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Second Page */
+header {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5.5rem;
+  box-shadow: 0px 1px 10px 2px #d7d7d7;
+  margin-bottom: 5rem;
+}
+
+header .student-info {
+  font-size: 1.2rem;
+}
+
+.exam-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.exam-time .time {
+  color: red;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.exam-time .date {
+  color: gray;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10rem;
+  margin-left: 10rem;
+}
+
+.exam-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+.question-header {
+  color: red;
+}
+
+.question-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.exam-title-container {
+  display: flex;
+  align-items: center;
+}
+
+.exam-title-container img {
+  height: 45px;
+  background-color: rgba(255, 0, 0, 0.152);
+  border-radius: 50%;
+  padding: 0.5rem;
+  margin-right: 0.7rem;
+}
+
+.exam-content {
+  margin-bottom: 3rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.6rem;
+  width: 100%;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border: 1px solid rgba(128, 128, 128, 0.371);
+}
+
+.icon-container {
+  margin-top: 0;
+} 
+
+.title-container {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.time-exam-container {
+  color: rgb(27, 203, 27);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.time-left {
+  margin-left: 0.5rem;
+}
+
+.question-number-container {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+main a {
+  background-color: red;
+  text-decoration: none;
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.submit-container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  justify-self: end;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end; 
+  width: 100%; 
+}
+
+.actions a {
+  background-color: red;
+  text-decoration: none;
+  color: white;
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* third page */
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: white;
+  padding: 2rem 10rem;
+  border-radius: 0.6rem;
+}
+
+.result-status {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.pass {
+  color: rgb(21, 182, 21);
+} 
+
+.fail {
+  color: rgb(227, 31, 31);
+}
+
+.score-container {
+  background-color: rgba(21, 182, 21, 0.112);
+  padding: 0.7rem 2rem;
+  border-radius: 4rem;
+  border: 1px solid rgba(21, 182, 21, 0.5);
+}
+
+.score-container span {
+  font-size: 1.5rem;
+  color: rgb(151, 151, 151);
+}
+
+.score-container span:not(:last-child) {
+  margin-right: 0.5rem;
+}
+
+.score-container .score-value {
+  color: rgb(47, 221, 47);
+  font-weight: bold;
+}
