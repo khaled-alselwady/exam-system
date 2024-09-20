@@ -16,8 +16,7 @@ namespace ExamSystem.DataAccess.Configurations
             Property(s => s.QuestionId)
                 .IsRequired();
 
-            HasIndex(s => s.QuestionId)
-                .IsUnique();
+            HasIndex(s => s.QuestionId);
         }
     }
 }

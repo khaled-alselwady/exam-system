@@ -10,6 +10,6 @@ namespace ExamSystem.Entities
         public string Name { get; set; }
         public string Email { get; set; }
 
-        public ICollection<Exam> Exams { get; set; }
+        public ICollection<Exam> Exams { get; set; } = new List<Exam>();
     }
 }

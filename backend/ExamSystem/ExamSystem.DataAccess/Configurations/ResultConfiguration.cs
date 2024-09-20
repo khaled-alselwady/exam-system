@@ -9,8 +9,8 @@ namespace ExamSystem.DataAccess.Configurations
         {
             HasKey(r => r.Id);
 
-            Property(r => r.Score)
-                .HasColumnType("DECIMAL(5,2)")
+            Property(s => s.Score)
+                .HasColumnType("decimal")
                 .IsRequired();
 
             Property(r => r.IsPassed)
@@ -18,6 +18,7 @@ namespace ExamSystem.DataAccess.Configurations
 
             HasRequired(r => r.Exam)
                 .WithOptional(e => e.Result)
+                .Map(m => m.MapKey("ResultId"))
                 .WillCascadeOnDelete(false);
         }
     }

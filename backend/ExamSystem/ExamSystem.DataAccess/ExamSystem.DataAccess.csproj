@@ -54,10 +54,23 @@
     <Compile Include="Configurations\ExamConfiguration.cs" />
     <Compile Include="Configurations\OptionConfiguration.cs" />
     <Compile Include="Configurations\QuestionConfiguration.cs" />
+    <Compile Include="Configurations\ResultConfiguration.cs" />
     <Compile Include="Configurations\StudentAnswerConfiguration.cs" />
     <Compile Include="Configurations\StudentConfiguration.cs" />
     <Compile Include="Configurations\SubjectConfiguration.cs" />
     <Compile Include="Data\AppDbContext.cs" />
+    <Compile Include="Migrations\202409202239425_InitialMigration.cs" />
+    <Compile Include="Migrations\202409202239425_InitialMigration.Designer.cs">
+      <DependentUpon>202409202239425_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409202317566_FixesRelationBetweenResultAndExam.cs" />
+    <Compile Include="Migrations\202409202317566_FixesRelationBetweenResultAndExam.Designer.cs">
+      <DependentUpon>202409202317566_FixesRelationBetweenResultAndExam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202409202326025_FixesRelationBetweenResultAndExam1.cs" />
+    <Compile Include="Migrations\202409202326025_FixesRelationBetweenResultAndExam1.Designer.cs">
+      <DependentUpon>202409202326025_FixesRelationBetweenResultAndExam1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -70,6 +83,17 @@
       <Project>{0484bbbd-d251-47ec-bb0b-7d4a2e9c43ee}</Project>
       <Name>ExamSystem.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202409202239425_InitialMigration.resx">
+      <DependentUpon>202409202239425_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409202317566_FixesRelationBetweenResultAndExam.resx">
+      <DependentUpon>202409202317566_FixesRelationBetweenResultAndExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409202326025_FixesRelationBetweenResultAndExam1.resx">
+      <DependentUpon>202409202326025_FixesRelationBetweenResultAndExam1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

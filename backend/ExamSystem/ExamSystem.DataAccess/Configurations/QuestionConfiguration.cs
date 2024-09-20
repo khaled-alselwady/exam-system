@@ -9,19 +9,18 @@ namespace ExamSystem.DataAccess.Configurations
         {
             HasKey(s => s.Id);
 
-            Property(s => s.Text)
+            Property(q => q.Text)
                 .IsRequired()
-                .HasMaxLength(int.MaxValue)
-                .HasColumnType("nvarchar");
+                .HasColumnType("nvarchar(max)");
 
             HasIndex(s => s.SubjectId);
             HasIndex(s => s.CorrectOptionId);
 
             // question - option
             HasMany(q => q.Options)
-            .WithRequired(o => o.Question)
-            .HasForeignKey(o => o.QuestionId)
-            .WillCascadeOnDelete(false);
+             .WithRequired(o => o.Question)
+             .HasForeignKey(o => o.QuestionId)
+             .WillCascadeOnDelete(false);
 
             // question - subject
             HasRequired(q => q.Subject)
@@ -31,8 +30,9 @@ namespace ExamSystem.DataAccess.Configurations
 
             // question - correctOption
             HasRequired(q => q.CorrectOption)
-                .WithRequiredDependent(co => co.Question)
-                .Map(m => m.MapKey("CorrectOptionId"));
+            .WithOptional() // CorrectOption does not need to know about Question
+            .Map(m => m.MapKey("QuestionId"))
+            .WillCascadeOnDelete(false);
         }
     }
 }
