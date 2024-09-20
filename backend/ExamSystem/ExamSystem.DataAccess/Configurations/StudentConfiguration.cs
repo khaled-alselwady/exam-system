@@ -24,4 +24,20 @@ namespace ExamSystem.DataAccess.Configurations
                 .HasColumnType("varchar");
         }
     }
+
+    public class SubjectConfiguration : EntityTypeConfiguration<Subject>
+    {
+        public SubjectConfiguration()
+        {
+            HasKey(s => s.Id);
+
+            Property(s => s.Id)
+                 .HasColumnType("tinyint");
+
+            Property(s => s.Name)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnType("nvarchar");
+        }
+    }
 }
