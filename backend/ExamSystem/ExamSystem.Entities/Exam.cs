@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ExamSystem.Entities
 {
@@ -10,6 +11,8 @@ namespace ExamSystem.Entities
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
-        public DateTime ExamDate { get; set; }  
+        public DateTime ExamDate { get; set; }
+
+        public ICollection<StudentAnswer> StudentAnswers { get; set; }
     }
 }
