@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ExamSystem.Entities
 {
-    public class Student : BaseEntity
+    public class Subject : BaseEntity
     {
         public string Name { get; set; }
-        public string Email { get; set; }
     }
 }
