@@ -1,4 +1,5 @@
-﻿using ExamSystem.Entities;
+﻿using ExamSystem.DataAccess.Configurations;
+using ExamSystem.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -19,8 +20,14 @@ namespace ExamSystem.DataAccess.Data
         public DbSet<Result> Results { get; set; }
 
 
-        protected AppDbContext() : base("ExamSystemDbContext")
+        public AppDbContext() : base("ExamSystemDbContext")
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.AddFromAssembly(typeof(StudentConfiguration).Assembly);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

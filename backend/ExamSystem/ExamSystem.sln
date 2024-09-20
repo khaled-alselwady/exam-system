@@ -5,6 +5,10 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamSystem.API", "ExamSystem.API\ExamSystem.API.csproj", "{E60E1C5A-4F3B-47F5-A75E-8FC70B236CFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamSystem.DataAccess", "ExamSystem.DataAccess\ExamSystem.DataAccess.csproj", "{784C8FEB-C764-4D9C-BC7C-B3F0907AFC1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamSystem.Entities", "ExamSystem.Entities\ExamSystem.Entities.csproj", "{0484BBBD-D251-47EC-BB0B-7D4A2E9C43EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{E60E1C5A-4F3B-47F5-A75E-8FC70B236CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E60E1C5A-4F3B-47F5-A75E-8FC70B236CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E60E1C5A-4F3B-47F5-A75E-8FC70B236CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{784C8FEB-C764-4D9C-BC7C-B3F0907AFC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{784C8FEB-C764-4D9C-BC7C-B3F0907AFC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{784C8FEB-C764-4D9C-BC7C-B3F0907AFC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{784C8FEB-C764-4D9C-BC7C-B3F0907AFC1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0484BBBD-D251-47EC-BB0B-7D4A2E9C43EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0484BBBD-D251-47EC-BB0B-7D4A2E9C43EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0484BBBD-D251-47EC-BB0B-7D4A2E9C43EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0484BBBD-D251-47EC-BB0B-7D4A2E9C43EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
