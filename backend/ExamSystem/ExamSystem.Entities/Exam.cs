@@ -14,5 +14,6 @@ namespace ExamSystem.Entities
         public DateTime ExamDate { get; set; }
 
         public ICollection<StudentAnswer> StudentAnswers { get; set; }
+        public Result Result { get; set; } 
     }
 }

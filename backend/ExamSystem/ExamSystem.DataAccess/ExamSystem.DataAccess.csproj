@@ -51,8 +51,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\ExamConfiguration.cs" />
     <Compile Include="Configurations\OptionConfiguration.cs" />
     <Compile Include="Configurations\QuestionConfiguration.cs" />
+    <Compile Include="Configurations\StudentAnswerConfiguration.cs" />
     <Compile Include="Configurations\StudentConfiguration.cs" />
     <Compile Include="Configurations\SubjectConfiguration.cs" />
     <Compile Include="Data\AppDbContext.cs" />
