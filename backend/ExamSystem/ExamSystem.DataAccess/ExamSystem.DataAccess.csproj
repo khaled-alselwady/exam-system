@@ -63,6 +63,10 @@
     <Compile Include="Migrations\202409212305078_InitialMigration.Designer.cs">
       <DependentUpon>202409212305078_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202409221521548_changeSubjectIdDataTypeToInt.cs" />
+    <Compile Include="Migrations\202409221521548_changeSubjectIdDataTypeToInt.Designer.cs">
+      <DependentUpon>202409221521548_changeSubjectIdDataTypeToInt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -79,6 +83,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202409212305078_InitialMigration.resx">
       <DependentUpon>202409212305078_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409221521548_changeSubjectIdDataTypeToInt.resx">
+      <DependentUpon>202409221521548_changeSubjectIdDataTypeToInt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

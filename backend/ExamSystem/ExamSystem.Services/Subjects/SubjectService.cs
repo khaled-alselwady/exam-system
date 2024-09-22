@@ -18,7 +18,7 @@ namespace ExamSystem.Services.Subjects
             _subjectValidation = new SubjectValidation();
         }
 
-        public async Task<List<Subject>> GetAll()
+        public async Task<List<Subject>> GetAllAsync()
         {
             try
             {
@@ -30,7 +30,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<Subject> Find(int id)
+        public async Task<Subject> FindAsync(int id)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<Subject> Add(Subject newSubject)
+        public async Task<Subject> AddAsync(Subject newSubject)
         {
             try
             {
@@ -51,6 +51,7 @@ namespace ExamSystem.Services.Subjects
                     return null;
                 }
 
+                //var subject = new Subject { Name = newSubject.Name };
                 _context.Subjects.Add(newSubject);
                 await _context.SaveChangesAsync();
 
@@ -62,7 +63,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<Subject> Update(int id, Subject updatedSubject)
+        public async Task<Subject> UpdateAsync(int id, Subject updatedSubject)
         {
             try
             {
@@ -94,7 +95,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<bool> Remove(int id)
+        public async Task<bool> RemoveAsync(int id)
         {
             try
             {
@@ -107,7 +108,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<bool> ExistsById(int id)
+        public async Task<bool> ExistsByIdAsync(int id)
         {
             try
             {
@@ -119,7 +120,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<bool> ExistsByName(string name)
+        public async Task<bool> ExistsByNameAsync(string name)
         {
             try
             {
@@ -131,11 +132,11 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<bool> NotExistsByName(string name)
+        public async Task<bool> NotExistsByNameAsync(string name)
         {
             try
             {
-                return !await ExistsByName(name);
+                return !await ExistsByNameAsync(name);
             }
             catch (Exception ex)
             {

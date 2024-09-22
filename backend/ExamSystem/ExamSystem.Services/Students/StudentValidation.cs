@@ -13,7 +13,7 @@ namespace ExamSystem.Services.Students
 
                            && await ValidationHelper.ValidateAsync(
                                entity: student,
-                               valueCheck: (s) => studentService.NotExistsByEmail(s.Email));
+                               valueCheck: (s) => studentService.NotExistsByEmailAsync(s.Email));
 
 
             return isValid;

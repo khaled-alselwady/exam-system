@@ -13,7 +13,7 @@ namespace ExamSystem.Services.Subjects
 
                            && await ValidationHelper.ValidateAsync(
                                subject,
-                               valueCheck: (s) => subjectService.ExistsByName(s.Name));
+                               valueCheck: (s) => subjectService.NotExistsByNameAsync(s.Name));
 
             return isValid;
         }

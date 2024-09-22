@@ -23,7 +23,7 @@ namespace ExamSystem.API.Controllers
         {
             try
             {
-                var students = await _studentService.GetAll();
+                var students = await _studentService.GetAllAsync();
                 return students != null ? (IHttpActionResult)Ok(students) : NotFound();
             }
             catch (Exception ex)
@@ -38,7 +38,7 @@ namespace ExamSystem.API.Controllers
         {
             try
             {
-                var student = await _studentService.Find(id);
+                var student = await _studentService.FindAsync(id);
                 return student != null ? (IHttpActionResult)Ok(student) : NotFound();
             }
             catch (Exception ex)
@@ -58,7 +58,7 @@ namespace ExamSystem.API.Controllers
 
             try
             {
-                var student = await _studentService.Add(newStudent);
+                var student = await _studentService.AddAsync(newStudent);
                 return student != null
                     ? (IHttpActionResult)CreatedAtRoute("FindStudentById", new { id = student.Id }, student)
                     : BadRequest();
@@ -80,7 +80,7 @@ namespace ExamSystem.API.Controllers
 
             try
             {
-                var student = await _studentService.Update(id, updatedStudent);
+                var student = await _studentService.UpdateAsync(id, updatedStudent);
                 return student != null ? (IHttpActionResult)Ok(student) : BadRequest();
             }
             catch (Exception ex)
@@ -95,7 +95,7 @@ namespace ExamSystem.API.Controllers
         {
             try
             {
-                var isDeleted = await _studentService.Remove(id);
+                var isDeleted = await _studentService.RemoveAsync(id);
                 return isDeleted ? (IHttpActionResult)StatusCode(HttpStatusCode.NoContent) : NotFound();
             }
             catch (Exception ex)
@@ -110,7 +110,7 @@ namespace ExamSystem.API.Controllers
         {
             try
             {
-                var isFound = await _studentService.ExistsById(id);
+                var isFound = await _studentService.ExistsByIdAsync(id);
                 return isFound ? (IHttpActionResult)Ok(true) : NotFound();
             }
             catch (Exception ex)
@@ -125,7 +125,7 @@ namespace ExamSystem.API.Controllers
         {
             try
             {
-                var isFound = await _studentService.ExistsByEmail(email);
+                var isFound = await _studentService.ExistsByEmailAsync(email);
                 return isFound ? (IHttpActionResult)Ok(true) : NotFound();
             }
             catch (Exception ex)

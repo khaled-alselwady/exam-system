@@ -19,7 +19,7 @@ namespace ExamSystem.Services
             _studentValidation = new StudentValidation();
         }
 
-        public async Task<List<Student>> GetAll()
+        public async Task<List<Student>> GetAllAsync()
         {
             try
             {
@@ -31,7 +31,7 @@ namespace ExamSystem.Services
             }
         }
 
-        public async Task<Student> Find(int id)
+        public async Task<Student> FindAsync(int id)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace ExamSystem.Services
             }
         }
 
-        public async Task<Student> Add(Student newStudent)
+        public async Task<Student> AddAsync(Student newStudent)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace ExamSystem.Services
             }
         }
 
-        public async Task<Student> Update(int id, Student updatedStudent)
+        public async Task<Student> UpdateAsync(int id, Student updatedStudent)
         {
             try
             {
@@ -95,7 +95,7 @@ namespace ExamSystem.Services
             }
         }
 
-        public async Task<bool> Remove(int id)
+        public async Task<bool> RemoveAsync(int id)
         {
             try
             {
@@ -117,7 +117,7 @@ namespace ExamSystem.Services
             }
         }
 
-        public async Task<bool> ExistsById(int id)
+        public async Task<bool> ExistsByIdAsync(int id)
         {
             try
             {
@@ -129,7 +129,7 @@ namespace ExamSystem.Services
             }
         }
 
-        public async Task<bool> ExistsByEmail(string email)
+        public async Task<bool> ExistsByEmailAsync(string email)
         {
             try
             {
@@ -141,11 +141,11 @@ namespace ExamSystem.Services
             }
         }
 
-        public async Task<bool> NotExistsByEmail(string email)
+        public async Task<bool> NotExistsByEmailAsync(string email)
         {
             try
             {
-                return !await ExistsByEmail(email);
+                return !await ExistsByEmailAsync(email);
             }
             catch (Exception ex)
             {

@@ -3,9 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ExamSystem.Entities
 {
-    public class Subject : BaseEntity
+    public class Subject
     {
-        public new byte Id { get; set; }
+        [Key]
+        public byte Id { get; set; }
 
         [Required]
         [MaxLength(50)]

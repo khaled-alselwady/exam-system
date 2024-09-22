@@ -1,4 +1,5 @@
 ﻿using ExamSystem.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
 namespace ExamSystem.DataAccess.Configurations
@@ -10,7 +11,8 @@ namespace ExamSystem.DataAccess.Configurations
             HasKey(s => s.Id);
 
             Property(s => s.Id)
-                 .HasColumnType("tinyint");
+                 .HasColumnType("tinyint")
+                 .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             Property(s => s.Name)
                 .IsRequired()
