@@ -28,10 +28,10 @@ namespace ExamSystem.DataAccess.Configurations
                 .HasForeignKey(q => q.SubjectId)
                 .WillCascadeOnDelete(false);
 
-            // question - correctOption
+            // Question - CorrectOption 
             HasRequired(q => q.CorrectOption)
-            .WithOptional() // CorrectOption does not need to know about Question
-            .Map(m => m.MapKey("QuestionId"))
+            .WithMany()
+            .HasForeignKey(q => q.CorrectOptionId) // FK in Question pointing to CorrectOption
             .WillCascadeOnDelete(false);
         }
     }

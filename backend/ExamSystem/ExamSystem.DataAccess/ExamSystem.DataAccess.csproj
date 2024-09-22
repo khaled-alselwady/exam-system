@@ -59,17 +59,9 @@
     <Compile Include="Configurations\StudentConfiguration.cs" />
     <Compile Include="Configurations\SubjectConfiguration.cs" />
     <Compile Include="Data\AppDbContext.cs" />
-    <Compile Include="Migrations\202409202239425_InitialMigration.cs" />
-    <Compile Include="Migrations\202409202239425_InitialMigration.Designer.cs">
-      <DependentUpon>202409202239425_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202409202317566_FixesRelationBetweenResultAndExam.cs" />
-    <Compile Include="Migrations\202409202317566_FixesRelationBetweenResultAndExam.Designer.cs">
-      <DependentUpon>202409202317566_FixesRelationBetweenResultAndExam.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202409202326025_FixesRelationBetweenResultAndExam1.cs" />
-    <Compile Include="Migrations\202409202326025_FixesRelationBetweenResultAndExam1.Designer.cs">
-      <DependentUpon>202409202326025_FixesRelationBetweenResultAndExam1.cs</DependentUpon>
+    <Compile Include="Migrations\202409212305078_InitialMigration.cs" />
+    <Compile Include="Migrations\202409212305078_InitialMigration.Designer.cs">
+      <DependentUpon>202409212305078_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,14 +77,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202409202239425_InitialMigration.resx">
-      <DependentUpon>202409202239425_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409202317566_FixesRelationBetweenResultAndExam.resx">
-      <DependentUpon>202409202317566_FixesRelationBetweenResultAndExam.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202409202326025_FixesRelationBetweenResultAndExam1.resx">
-      <DependentUpon>202409202326025_FixesRelationBetweenResultAndExam1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202409212305078_InitialMigration.resx">
+      <DependentUpon>202409212305078_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

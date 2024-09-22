@@ -18,7 +18,6 @@ namespace ExamSystem.DataAccess.Configurations
 
             HasRequired(r => r.Exam)
                 .WithOptional(e => e.Result)
-                .Map(m => m.MapKey("ResultId"))
                 .WillCascadeOnDelete(false);
         }
     }

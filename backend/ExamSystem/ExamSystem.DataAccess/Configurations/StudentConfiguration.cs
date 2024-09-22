@@ -1,10 +1,5 @@
 ﻿using ExamSystem.Entities;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExamSystem.DataAccess.Configurations
 {
@@ -14,7 +9,7 @@ namespace ExamSystem.DataAccess.Configurations
         {
             HasKey(s => s.Id);
 
-            Property(s => s.Name)  
+            Property(s => s.Name)
                 .HasMaxLength(100)
                 .HasColumnType("nvarchar");
 
@@ -22,6 +17,10 @@ namespace ExamSystem.DataAccess.Configurations
                 .HasMaxLength(200)
                 .IsRequired()
                 .HasColumnType("varchar");
+
+            HasIndex(s => s.Email)
+            .IsUnique()
+            .HasName("IX_Unique_Email");
         }
     }
 }

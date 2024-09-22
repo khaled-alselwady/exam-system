@@ -12,9 +12,8 @@ namespace ExamSystem.Entities
         public Subject Subject { get; set; }
 
         public DateTime ExamDate { get; set; }
-        public int? ResultId { get; set; }
-        public Result Result { get; set; }
 
+        public Result Result { get; set; }
         public ICollection<StudentAnswer> StudentAnswers { get; set; } = new List<StudentAnswer>();
     }
 }

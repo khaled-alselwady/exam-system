@@ -16,6 +16,11 @@ namespace ExamSystem.DataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnType("nvarchar");
+
+            HasIndex(s => s.Name)
+                .IsUnique()
+                .HasName("IX_Unique_SubjectName");
+            ;
         }
     }
 }

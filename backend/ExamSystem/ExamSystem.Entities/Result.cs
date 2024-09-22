@@ -4,6 +4,7 @@
     {
         public decimal Score { get; set; }
         public bool IsPassed { get; set; }
+        public int ExamId { get; set; }
         public Exam Exam { get; set; }
     }
 }

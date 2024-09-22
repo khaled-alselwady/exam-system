@@ -15,7 +15,7 @@ namespace ExamSystem.DataAccess.Data
         public DbSet<Result> Results { get; set; }
 
 
-        public AppDbContext() : base("ExamSystemDbContext")
+        public AppDbContext() : base("name=ExamSystemDbContext")
         {
         }
 

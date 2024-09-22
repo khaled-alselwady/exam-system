@@ -7,16 +7,11 @@ namespace ExamSystem.DataAccess.Configurations
     {
         public OptionConfiguration()
         {
-            HasKey(s => s.Id);
+            HasKey(o => o.Id);
 
-            Property(s => s.Text)
+            Property(o => o.Text)
                 .HasMaxLength(255)
                 .HasColumnType("nvarchar");
-
-            Property(s => s.QuestionId)
-                .IsRequired();
-
-            HasIndex(s => s.QuestionId);
         }
     }
 }

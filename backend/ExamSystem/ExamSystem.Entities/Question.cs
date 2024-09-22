@@ -9,9 +9,11 @@ namespace ExamSystem.Entities
         public byte SubjectId { get; set; }
         public Subject Subject { get; set; }
 
-        public int CorrectOptionId { get; set; }
+        // One-to-One relationship with the correct Option
+        public int CorrectOptionId { get; set; } // Add this FK
         public Option CorrectOption { get; set; }
 
+        // One-to-Many relationship with Options
         public ICollection<Option> Options { get; set; } = new List<Option>();
     }
 }
