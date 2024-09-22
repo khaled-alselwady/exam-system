@@ -38,8 +38,8 @@ namespace ExamSystem.API.Controllers
         {
             try
             {
-                var student = await _subjectService.FindAsync(id);
-                return student != null ? (IHttpActionResult)Ok(student) : NotFound();
+                var subject = await _subjectService.FindAsync(id);
+                return subject != null ? (IHttpActionResult)Ok(subject) : NotFound();
             }
             catch (Exception ex)
             {
