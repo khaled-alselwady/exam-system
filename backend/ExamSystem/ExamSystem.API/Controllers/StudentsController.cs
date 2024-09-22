@@ -1,5 +1,7 @@
 ﻿using ExamSystem.Entities;
 using ExamSystem.Services;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -19,97 +21,116 @@ namespace ExamSystem.API.Controllers
         [Route("")]
         public async Task<IHttpActionResult> GetAllStudents()
         {
-            var students = await _studentService.GetAll();
-
-            if (students == null)
+            try
             {
-                return NotFound();
+                var students = await _studentService.GetAll();
+                return students != null ? (IHttpActionResult)Ok(students) : NotFound();
             }
-
-            return Ok(students);
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception("An error occurred while retrieving students.", ex));
+            }
         }
 
         [HttpGet]
         [Route("{id:int}", Name = "FindStudentById")]
         public async Task<IHttpActionResult> Find(int id)
         {
-            var student = await _studentService.Find(id);
-
-            if (student == null)
+            try
             {
-                return NotFound();
+                var student = await _studentService.Find(id);
+                return student != null ? (IHttpActionResult)Ok(student) : NotFound();
             }
-
-            return Ok(student);
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"An error occurred while finding the student with ID {id}.", ex));
+            }
         }
 
         [HttpPost]
         [Route("")]
         public async Task<IHttpActionResult> Add([FromBody] Student newStudent)
         {
-            if (newStudent == null)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
-            var student = await _studentService.Add(newStudent);
-
-            if (student == null)
+            try
             {
-                return BadRequest();
+                var student = await _studentService.Add(newStudent);
+                return student != null
+                    ? (IHttpActionResult)CreatedAtRoute("FindStudentById", new { id = student.Id }, student)
+                    : BadRequest();
             }
-
-            return CreatedAtRoute("FindStudentById", new { id = student.Id }, student);
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception("An error occurred while adding a new student.", ex));
+            }
         }
 
         [HttpPut]
         [Route("{id:int}")]
         public async Task<IHttpActionResult> Update(int id, [FromBody] Student updatedStudent)
         {
-            if (updatedStudent == null)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
-            var student = await _studentService.Update(id, updatedStudent);
-
-            if (student == null)
+            try
             {
-                return BadRequest();
+                var student = await _studentService.Update(id, updatedStudent);
+                return student != null ? (IHttpActionResult)Ok(student) : BadRequest();
             }
-
-            return CreatedAtRoute("FindStudentById", new { id = student.Id }, student);
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"An error occurred while updating the student with ID {id}.", ex));
+            }
         }
 
         [HttpDelete]
         [Route("{id:int}")]
         public async Task<IHttpActionResult> Delete(int id)
         {
-            var isDeleted = await _studentService.Remove(id);
-
-            if (isDeleted)
+            try
             {
-                return Ok(true);
+                var isDeleted = await _studentService.Remove(id);
+                return isDeleted ? (IHttpActionResult)StatusCode(HttpStatusCode.NoContent) : NotFound();
             }
-            else
+            catch (Exception ex)
             {
-                return NotFound();
+                return InternalServerError(new Exception($"An error occurred while deleting the student with ID {id}.", ex));
             }
         }
 
         [HttpGet]
-        [Route("exists/{id:int}")]
-        public async Task<IHttpActionResult> ExistsById(int id)
+        [Route("existsById")]
+        public async Task<IHttpActionResult> ExistsById([FromUri] int id)
         {
-            var isFound = await _studentService.Exists(id);
-
-            if (isFound)
+            try
             {
-                return Ok(true);
+                var isFound = await _studentService.ExistsById(id);
+                return isFound ? (IHttpActionResult)Ok(true) : NotFound();
             }
-            else
+            catch (Exception ex)
             {
-                return NotFound();
+                return InternalServerError(new Exception($"An error occurred while checking if the student with ID {id} exists.", ex));
+            }
+        }
+
+        [HttpGet]
+        [Route("existsByEmail")]
+        public async Task<IHttpActionResult> ExistsByEmail([FromUri] string email)
+        {
+            try
+            {
+                var isFound = await _studentService.ExistsByEmail(email);
+                return isFound ? (IHttpActionResult)Ok(true) : NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception("An error occurred while checking if the email exists.", ex));
             }
         }
     }
