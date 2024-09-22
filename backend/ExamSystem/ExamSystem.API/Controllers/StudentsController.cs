@@ -61,5 +61,56 @@ namespace ExamSystem.API.Controllers
 
             return CreatedAtRoute("FindStudentById", new { id = student.Id }, student);
         }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public async Task<IHttpActionResult> Update(int id, [FromBody] Student updatedStudent)
+        {
+            if (updatedStudent == null)
+            {
+                return BadRequest();
+            }
+
+            var student = await _studentService.Update(id, updatedStudent);
+
+            if (student == null)
+            {
+                return BadRequest();
+            }
+
+            return CreatedAtRoute("FindStudentById", new { id = student.Id }, student);
+        }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task<IHttpActionResult> Delete(int id)
+        {
+            var isDeleted = await _studentService.Remove(id);
+
+            if (isDeleted)
+            {
+                return Ok(true);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
+
+        [HttpGet]
+        [Route("exists/{id:int}")]
+        public async Task<IHttpActionResult> ExistsById(int id)
+        {
+            var isFound = await _studentService.Exists(id);
+
+            if (isFound)
+            {
+                return Ok(true);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

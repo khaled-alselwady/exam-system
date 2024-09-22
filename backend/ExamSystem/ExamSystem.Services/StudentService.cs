@@ -39,6 +39,11 @@ namespace ExamSystem.Services
 
         public async Task<Student> Update(int id, Student updatedStudent)
         {
+            if (updatedStudent == null || id != updatedStudent.Id)
+            {
+                return null;
+            }
+
             var student = await _context.Students.FindAsync(id);
 
             if (student == null)
@@ -54,16 +59,18 @@ namespace ExamSystem.Services
 
         public async Task<bool> Remove(int id)
         {
-            var studentToRemove = await _context.Students.FindAsync(id);
-            if (studentToRemove == null)
-            {
-                return false;
-            }
+            //var studentToRemove = await _context.Students.FindAsync(id);
+            //if (studentToRemove == null)
+            //{
+            //    return false;
+            //}
 
-            var result = _context.Students.Remove(studentToRemove);
-            await _context.SaveChangesAsync();
+            //var result = _context.Students.Remove(studentToRemove);
+            //await _context.SaveChangesAsync();
 
-            return result != null;
+            var result = await _context.Database.ExecuteSqlCommandAsync("DELETE FROM Students WHERE Id = @p0", id);
+
+            return result > 0;
         }
 
         public async Task<bool> Exists(int id)
