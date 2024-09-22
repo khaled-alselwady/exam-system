@@ -43,11 +43,6 @@ namespace ExamSystem.Services.Exams
         {
             try
             {
-                //if (!await _examValidation.IsValid(newExam, this))
-                //{
-                //    return null;
-                //}
-
                 _context.Exams.Add(newExam);
                 await _context.SaveChangesAsync();
 
@@ -63,11 +58,6 @@ namespace ExamSystem.Services.Exams
         {
             try
             {
-                //if (!await _examValidation.IsValid(updatedExam, this))
-                //{
-                //    return null;
-                //}
-
                 if (updatedExam == null || id != updatedExam.Id)
                 {
                     return null;
