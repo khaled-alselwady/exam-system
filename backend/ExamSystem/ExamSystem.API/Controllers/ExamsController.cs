@@ -59,7 +59,7 @@ namespace ExamSystem.API.Controllers
             {
                 var exam = await _examService.AddAsync(newExam);
                 return exam != null
-                    ? (IHttpActionResult)CreatedAtRoute("FindStudentById", new { id = exam.Id }, exam)
+                    ? (IHttpActionResult)CreatedAtRoute("FindExamById", new { id = exam.Id }, exam)
                     : BadRequest();
             }
             catch (Exception ex)

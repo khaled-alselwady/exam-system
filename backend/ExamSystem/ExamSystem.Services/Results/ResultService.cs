@@ -44,10 +44,10 @@ namespace ExamSystem.Services.Results
         {
             try
             {
-                //if (!await _examValidation.IsValid(newExam, this))
-                //{
-                //    return null;
-                //}
+                if (newResult == null || newResult.Score < 0)
+                {
+                    return null;
+                }
 
                 _context.Results.Add(newResult);
                 await _context.SaveChangesAsync();
@@ -64,10 +64,10 @@ namespace ExamSystem.Services.Results
         {
             try
             {
-                //if (!await _examValidation.IsValid(updatedExam, this))
-                //{
-                //    return null;
-                //}
+                if (updatedResult == null || updatedResult.Score < 0)
+                {
+                    return null;
+                }
 
                 if (updatedResult == null || id != updatedResult.Id)
                 {

@@ -1,4 +1,5 @@
 ﻿using ExamSystem.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.ModelConfiguration;
 
 namespace ExamSystem.DataAccess.Configurations
@@ -9,16 +10,18 @@ namespace ExamSystem.DataAccess.Configurations
         {
             HasKey(r => r.Id);
 
-            Property(s => s.Score)
+            Property(r => r.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            Property(r => r.Score)
                 .HasColumnType("decimal")
                 .IsRequired();
 
             Property(r => r.IsPassed)
                 .IsRequired();
 
-            HasRequired(r => r.Exam)
-                .WithOptional(e => e.Result)
-                .WillCascadeOnDelete(false);
+            Property(r => r.Id)
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace ExamSystem.DataAccess.Configurations
 
             Property(e => e.ExamDate)
                 .HasColumnType("datetime")
-                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed); // Set the option to be computed
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
 
             // exam - student
             HasRequired(e => e.Student)

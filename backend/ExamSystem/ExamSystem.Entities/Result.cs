@@ -1,10 +1,14 @@
-﻿namespace ExamSystem.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ExamSystem.Entities
 {
-    public class Result : BaseEntity
+    public class Result
     {
+        [Key, ForeignKey("Exam")]
+        public int Id { get; set; }
         public decimal Score { get; set; }
         public bool IsPassed { get; set; }
-        public int ExamId { get; set; }
         public Exam Exam { get; set; }
     }
 }
