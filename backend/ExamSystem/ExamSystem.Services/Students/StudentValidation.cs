@@ -7,13 +7,11 @@ namespace ExamSystem.Services.Students
     {
         public async Task<bool> IsValid(Student student, StudentService studentService)
         {
-            bool isValid = ValidationHelper.Validate(
-                            entity: student,
-                            valueCheck: s => ValidationHelper.IsNotEmpty(s.Email) && s.Email.Length <= 200)
+            bool isValid = ValidationHelper.IsNotEmpty(student.Email)
 
-                           &&
+                           && (student.Email.Length <= 200)
 
-                           await ValidationHelper.ValidateAsync(
+                           && await ValidationHelper.ValidateAsync(
                                entity: student,
                                valueCheck: (s) => studentService.NotExistsByEmail(s.Email));
 

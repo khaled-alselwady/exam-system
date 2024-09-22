@@ -10,10 +10,12 @@ namespace ExamSystem.Services.Subjects
     public class SubjectService
     {
         private readonly AppDbContext _context;
+        private readonly SubjectValidation _subjectValidation;
 
         public SubjectService()
         {
             _context = new AppDbContext();
+            _subjectValidation = new SubjectValidation();
         }
 
         public async Task<List<Subject>> GetAll()
@@ -44,10 +46,10 @@ namespace ExamSystem.Services.Subjects
         {
             try
             {
-                //if (!await _subjectValidation.IsValid(newSubject, this))
-                //{
-                //    return null;
-                //}
+                if (!await _subjectValidation.IsValid(newSubject, this))
+                {
+                    return null;
+                }
 
                 _context.Subjects.Add(newSubject);
                 await _context.SaveChangesAsync();
@@ -64,10 +66,10 @@ namespace ExamSystem.Services.Subjects
         {
             try
             {
-                //if (!await _studentValidation.IsValid(updatedStudent, this))
-                //{
-                //    return null;
-                //}
+                if (!await _subjectValidation.IsValid(updatedSubject, this))
+                {
+                    return null;
+                }
 
                 if (updatedSubject == null || id != updatedSubject.Id)
                 {

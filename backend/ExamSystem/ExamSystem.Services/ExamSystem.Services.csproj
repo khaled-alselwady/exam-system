@@ -55,6 +55,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Students\StudentService.cs" />
     <Compile Include="Students\StudentValidation.cs" />
+    <Compile Include="Subjects\SubjectService.cs" />
+    <Compile Include="Subjects\SubjectValidation.cs" />
     <Compile Include="ValidationHelper.cs" />
   </ItemGroup>
   <ItemGroup>
