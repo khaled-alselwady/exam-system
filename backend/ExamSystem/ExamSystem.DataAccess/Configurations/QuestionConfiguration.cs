@@ -14,7 +14,6 @@ namespace ExamSystem.DataAccess.Configurations
                 .HasColumnType("nvarchar(max)");
 
             HasIndex(s => s.SubjectId);
-            HasIndex(s => s.CorrectOptionId);
 
             // question - option
             HasMany(q => q.Options)
@@ -27,12 +26,6 @@ namespace ExamSystem.DataAccess.Configurations
                 .WithMany(s => s.Questions)
                 .HasForeignKey(q => q.SubjectId)
                 .WillCascadeOnDelete(false);
-
-            // Question - CorrectOption 
-            HasRequired(q => q.CorrectOption)
-            .WithMany()
-            .HasForeignKey(q => q.CorrectOptionId) // FK in Question pointing to CorrectOption
-            .WillCascadeOnDelete(false);
         }
     }
 }

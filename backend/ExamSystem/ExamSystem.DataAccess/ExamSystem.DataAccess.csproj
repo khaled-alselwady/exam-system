@@ -79,6 +79,10 @@
     <Compile Include="Migrations\202409222126330_FixesAutoGeneratePKResult.Designer.cs">
       <DependentUpon>202409222126330_FixesAutoGeneratePKResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202409222200134_AddIsCorrectColumnToOptionTable.cs" />
+    <Compile Include="Migrations\202409222200134_AddIsCorrectColumnToOptionTable.Designer.cs">
+      <DependentUpon>202409222200134_AddIsCorrectColumnToOptionTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -107,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202409222126330_FixesAutoGeneratePKResult.resx">
       <DependentUpon>202409222126330_FixesAutoGeneratePKResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202409222200134_AddIsCorrectColumnToOptionTable.resx">
+      <DependentUpon>202409222200134_AddIsCorrectColumnToOptionTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
