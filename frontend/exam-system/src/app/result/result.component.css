@@ -1,0 +1,46 @@
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: white;
+    padding: 2rem 10rem;
+    border-radius: 0.6rem;
+    margin-right: 10rem;
+    margin-left: 10rem;
+  }
+  
+  .result-status {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .pass {
+    color: rgb(21, 182, 21);
+  } 
+  
+  .fail {
+    color: rgb(227, 31, 31);
+  }
+  
+  .score-container {
+    background-color: rgba(21, 182, 21, 0.112);
+    padding: 0.7rem 2rem;
+    border-radius: 4rem;
+    border: 1px solid rgba(21, 182, 21, 0.5);
+  }
+  
+  .score-container span {
+    font-size: 1.5rem;
+    color: rgb(151, 151, 151);
+  }
+  
+  .score-container span:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+  
+  .score-container .score-value {
+    color: rgb(47, 221, 47);
+    font-weight: bold;
+  }

@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<main>
+    <section class="result-container">
+        <div class="exam-title-container">
+            <div class="image-container">
+              <img src="../../assets/icon-grade-50.png" alt="Exam Icon">
+            </div>
+
+            <span class="title">Math Exam</span>
+        </div>
+
+        <p class="result-message">
+            you have successfully submitted you exam
+        </p>
+
+        <span class="result-status" [ngClass]="{
+            'pass': result === 'PASS',
+            'fail': result === 'FAIL'
+        }">
+            {{result}}
+        </span>
+
+        <div class="score-container">
+            <span class="score-value">15</span>
+
+            <span class="seperator">|</span>
+
+            <span class="total-score">20</span>
+        </div>
+    </section>
+</main>
