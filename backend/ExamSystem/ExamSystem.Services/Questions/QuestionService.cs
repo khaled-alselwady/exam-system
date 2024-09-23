@@ -121,6 +121,7 @@ namespace ExamSystem.Services.Questions
         public async Task<List<Option>> GetAllOptionsAsync(int questionId)
         {
             var options = await _context.Options
+                            .AsNoTracking()
                             .Where(o => o.QuestionId == questionId)
                             .ToListAsync();
 
@@ -130,6 +131,7 @@ namespace ExamSystem.Services.Questions
         public async Task<Option> GetRightOptionAsync(int questionId)
         {
             var rightOption = await _context.Options
+                                .AsNoTracking()
                                 .Where(o => o.QuestionId == questionId && o.IsCorrect)
                                 .SingleOrDefaultAsync();
 
@@ -139,6 +141,7 @@ namespace ExamSystem.Services.Questions
         public async Task<bool> IsRightOption(int questionId, int selectedOptionId)
         {
             bool isRightOption = await _context.Options
+                                    .AsNoTracking()
                                     .AnyAsync(o =>
                                     o.QuestionId == questionId &&
                                     o.Id == selectedOptionId &&

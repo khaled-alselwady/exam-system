@@ -3,6 +3,7 @@ using ExamSystem.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ExamSystem.Services.Results
@@ -115,6 +116,21 @@ namespace ExamSystem.Services.Results
             {
                 throw new Exception($"An error occurred while checking if the result with ID {id} exists.", ex);
             }
+        }
+
+        public async Task<decimal> CalculateScore(int examId)
+        {
+            var score = await _context.StudentAnswers
+                                .AsNoTracking()
+                                .Where(sa => sa.ExamId == examId)
+                                .Join(
+                                        _context.Options,
+                                        sa => sa.SelectedOptionId,
+                                        o => o.Id,
+                                        (sa, o) => new { sa, o })
+                                .CountAsync(result => result.o.IsCorrect);
+
+            return score;
         }
     }
 }

@@ -118,5 +118,20 @@ namespace ExamSystem.API.Controllers
                 return InternalServerError(new Exception($"An error occurred while checking if the result with ID {id} exists.", ex));
             }
         }
+
+        [HttpGet]
+        [Route("score")]
+        public async Task<IHttpActionResult> GetScore([FromUri] int examId)
+        {
+            try
+            {
+                var score = await _resultService.CalculateScore(examId);
+                return Ok(score);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"An error occurred while calculate the score of the examId {examId} exists.", ex));
+            }
+        }
     }
 }

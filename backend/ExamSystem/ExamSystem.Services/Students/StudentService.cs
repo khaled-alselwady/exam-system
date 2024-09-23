@@ -157,6 +157,7 @@ namespace ExamSystem.Services
         public async Task<List<Exam>> GetAllExamsAsync(int id)
         {
             var exams = await _context.Exams
+                            .AsNoTracking()
                             .Where(e => e.StudentId == id)
                             .ToListAsync();
 

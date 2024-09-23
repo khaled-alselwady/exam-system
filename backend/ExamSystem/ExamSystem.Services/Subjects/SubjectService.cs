@@ -3,6 +3,7 @@ using ExamSystem.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ExamSystem.Services.Subjects
@@ -142,6 +143,16 @@ namespace ExamSystem.Services.Subjects
             {
                 throw new Exception("An error occurred while checking if the subject name does not exist.", ex);
             }
+        }
+
+        public async Task<List<Question>> GetAllQuestionAsync(int id)
+        {
+            var questions = await _context.Questions
+                                .AsNoTracking()
+                                .Where(q => q.SubjectId == id)
+                                .ToListAsync();
+
+            return questions;
         }
     }
 }

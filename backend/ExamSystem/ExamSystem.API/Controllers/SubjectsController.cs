@@ -133,5 +133,20 @@ namespace ExamSystem.API.Controllers
                 return InternalServerError(new Exception("An error occurred while checking if the subject name exists.", ex));
             }
         }
+
+        [HttpGet]
+        [Route("questions")]
+        public async Task<IHttpActionResult> GetAllQuestions(int id)
+        {
+            try
+            {
+                var questions = await _subjectService.GetAllQuestionAsync(id);
+                return questions != null ? (IHttpActionResult)Ok(questions) : NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception("An error occurred while retrieving questions.", ex));
+            }
+        }
     }
 }
