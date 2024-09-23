@@ -1,0 +1,114 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10rem;
+    margin-left: 10rem;
+  }
+  
+  .exam-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    width: 100%;
+  }
+  
+  .question-header {
+    margin: 0;
+    color: red;
+  }
+  
+  .question-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .options-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  
+  .option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .exam-content {
+    margin-bottom: 3rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.6rem;
+    width: 100%;
+  }
+  
+  hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border: 1px solid rgba(128, 128, 128, 0.371);
+  }
+  
+  .icon-container {
+    margin-top: 0;
+  } 
+  
+  .time-left-container {
+    color: rgb(27, 203, 27);
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .time-left {
+    margin-left: 0.5rem;
+  }
+  
+  .question-count {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  main a {
+    background-color: red;
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .submit-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    justify-self: end;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end; 
+    width: 100%; 
+  }
+  
+  .actions a {
+    background-color: red;
+    text-decoration: none;
+    color: white;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
