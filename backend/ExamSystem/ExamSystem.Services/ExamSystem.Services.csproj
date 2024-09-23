@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Exams\ExamService.cs" />
     <Compile Include="IValidation.cs" />
+    <Compile Include="Options\OptionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Questions\QuestionService.cs" />
     <Compile Include="Results\ResultService.cs" />
