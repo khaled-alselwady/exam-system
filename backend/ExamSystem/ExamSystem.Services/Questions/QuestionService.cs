@@ -16,6 +16,11 @@ namespace ExamSystem.Services.Questions
             _context = new AppDbContext();
         }
 
+        private bool _IsQuestionValid(Question question)
+        {
+            return question != null && !string.IsNullOrWhiteSpace(question.Text);
+        }
+
         public async Task<List<Question>> GetAllAsync()
         {
             try
@@ -44,6 +49,11 @@ namespace ExamSystem.Services.Questions
         {
             try
             {
+                if (!_IsQuestionValid(newQuestion))
+                {
+                    return null;
+                }
+
                 _context.Questions.Add(newQuestion);
                 await _context.SaveChangesAsync();
 
@@ -59,6 +69,11 @@ namespace ExamSystem.Services.Questions
         {
             try
             {
+                if (!_IsQuestionValid(updatedQuestion))
+                {
+                    return null;
+                }
+
                 if (updatedQuestion == null || id != updatedQuestion.Id)
                 {
                     return null;
