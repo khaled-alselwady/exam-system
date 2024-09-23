@@ -125,7 +125,7 @@ namespace ExamSystem.API.Controllers
         {
             try
             {
-                var questions = await _questionService.GetAllOptions(id);
+                var questions = await _questionService.GetAllOptionsAsync(id);
                 return questions != null ? (IHttpActionResult)Ok(questions) : NotFound();
             }
             catch (Exception ex)
@@ -140,12 +140,27 @@ namespace ExamSystem.API.Controllers
         {
             try
             {
-                var questions = await _questionService.GetRightOption(id);
+                var questions = await _questionService.GetRightOptionAsync(id);
                 return questions != null ? (IHttpActionResult)Ok(questions) : NotFound();
             }
             catch (Exception ex)
             {
                 return InternalServerError(new Exception($"An error occurred while retrieving right option of the question with ID {id}.", ex));
+            }
+        }
+
+        [HttpGet]
+        [Route("check-right-answer")]
+        public async Task<IHttpActionResult> IsRightAnswer([FromUri] int questionId, [FromUri] int selectedOptionId)
+        {
+            try
+            {
+                var isFound = await _questionService.IsRightOption(questionId, selectedOptionId);
+                return isFound ? (IHttpActionResult)Ok(true) : NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"An error occurred while checking if the answer is correct or not.", ex));
             }
         }
     }

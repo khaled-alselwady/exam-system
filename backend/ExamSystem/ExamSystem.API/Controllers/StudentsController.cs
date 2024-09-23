@@ -133,5 +133,20 @@ namespace ExamSystem.API.Controllers
                 return InternalServerError(new Exception("An error occurred while checking if the email exists.", ex));
             }
         }
+
+        [HttpGet]
+        [Route("exams")]
+        public async Task<IHttpActionResult> GetAllExams(int id)
+        {
+            try
+            {
+                var exams = await _studentService.GetAllExamsAsync(id);
+                return exams != null ? (IHttpActionResult)Ok(exams) : NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"An error occurred while retrieving exams with student ID {id}.", ex));
+            }
+        }
     }
 }

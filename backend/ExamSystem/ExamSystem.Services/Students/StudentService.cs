@@ -4,6 +4,7 @@ using ExamSystem.Services.Students;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ExamSystem.Services
@@ -151,6 +152,15 @@ namespace ExamSystem.Services
             {
                 throw new Exception("An error occurred while checking if the email does not exist.", ex);
             }
+        }
+
+        public async Task<List<Exam>> GetAllExamsAsync(int id)
+        {
+            var exams = await _context.Exams
+                            .Where(e => e.StudentId == id)
+                            .ToListAsync();
+
+            return exams;
         }
     }
 }

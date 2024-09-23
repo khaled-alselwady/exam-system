@@ -118,7 +118,7 @@ namespace ExamSystem.Services.Questions
             }
         }
 
-        public async Task<List<Option>> GetAllOptions(int questionId)
+        public async Task<List<Option>> GetAllOptionsAsync(int questionId)
         {
             var options = await _context.Options
                             .Where(o => o.QuestionId == questionId)
@@ -127,13 +127,24 @@ namespace ExamSystem.Services.Questions
             return options;
         }
 
-        public async Task<Option> GetRightOption(int questionId)
+        public async Task<Option> GetRightOptionAsync(int questionId)
         {
             var rightOption = await _context.Options
                                 .Where(o => o.QuestionId == questionId && o.IsCorrect)
                                 .SingleOrDefaultAsync();
 
             return rightOption;
+        }
+
+        public async Task<bool> IsRightOption(int questionId, int selectedOptionId)
+        {
+            bool isRightOption = await _context.Options
+                                    .AnyAsync(o =>
+                                    o.QuestionId == questionId &&
+                                    o.Id == selectedOptionId &&
+                                    o.IsCorrect);
+
+            return isRightOption;
         }
     }
 }
