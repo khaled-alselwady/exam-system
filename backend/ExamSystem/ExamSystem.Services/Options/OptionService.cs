@@ -74,11 +74,6 @@ namespace ExamSystem.Services.Options
                     return null;
                 }
 
-                if (updatedOption == null || id != updatedOption.Id)
-                {
-                    return null;
-                }
-
                 var Option = await _context.Options.FindAsync(id);
 
                 if (Option == null)

@@ -74,11 +74,6 @@ namespace ExamSystem.Services.Questions
                     return null;
                 }
 
-                if (updatedQuestion == null || id != updatedQuestion.Id)
-                {
-                    return null;
-                }
-
                 var question = await _context.Questions.FindAsync(id);
 
                 if (question == null)
