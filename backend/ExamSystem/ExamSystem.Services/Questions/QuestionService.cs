@@ -3,6 +3,7 @@ using ExamSystem.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ExamSystem.Services.Questions
@@ -115,6 +116,24 @@ namespace ExamSystem.Services.Questions
             {
                 throw new Exception($"An error occurred while checking if the question with ID {id} exists.", ex);
             }
+        }
+
+        public async Task<List<Option>> GetAllOptions(int questionId)
+        {
+            var options = await _context.Options
+                            .Where(o => o.QuestionId == questionId)
+                            .ToListAsync();
+
+            return options;
+        }
+
+        public async Task<Option> GetRightOption(int questionId)
+        {
+            var rightOption = await _context.Options
+                                .Where(o => o.QuestionId == questionId && o.IsCorrect)
+                                .SingleOrDefaultAsync();
+
+            return rightOption;
         }
     }
 }

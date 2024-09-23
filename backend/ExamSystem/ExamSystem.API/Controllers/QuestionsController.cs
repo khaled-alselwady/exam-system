@@ -118,5 +118,35 @@ namespace ExamSystem.API.Controllers
                 return InternalServerError(new Exception($"An error occurred while checking if the question with ID {id} exists.", ex));
             }
         }
+
+        [HttpGet]
+        [Route("options")]
+        public async Task<IHttpActionResult> GetAllOptions(int id)
+        {
+            try
+            {
+                var questions = await _questionService.GetAllOptions(id);
+                return questions != null ? (IHttpActionResult)Ok(questions) : NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"An error occurred while retrieving options of the question with ID {id}.", ex));
+            }
+        }
+
+        [HttpGet]
+        [Route("right-option")]
+        public async Task<IHttpActionResult> GetRightOption(int id)
+        {
+            try
+            {
+                var questions = await _questionService.GetRightOption(id);
+                return questions != null ? (IHttpActionResult)Ok(questions) : NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"An error occurred while retrieving right option of the question with ID {id}.", ex));
+            }
+        }
     }
 }
