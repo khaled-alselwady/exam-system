@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+  * {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(238, 238, 238);
+  }
+  
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5.5rem;
+    box-shadow: 0px 1px 10px 2px #d7d7d7;
+    margin-bottom: 5rem;
+  }
+
+  .student-name {
+    font-size: 1.2rem;
+  }
+  
+  .exam-time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .exam-time .time {
+    color: red;
+    font-size: 1.4rem;
+    font-weight: 600;
+  }
+  
+  .exam-time .date {
+    color: gray;
+  }
+
+  .exam-title-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .exam-title-container img {
+    height: 45px;
+    background-color: rgba(255, 0, 0, 0.152);
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin-right: 0.7rem;
+  }
+
+  .exam-title-container .title {
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
