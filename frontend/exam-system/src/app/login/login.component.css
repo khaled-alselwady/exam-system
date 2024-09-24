@@ -43,6 +43,16 @@
     border: 1px solid rgba(128, 128, 128, 0.371);
   
   }
+
+  input.ng-invalid.ng-touched {
+    border: 2px solid rgb(223, 8, 8);
+    box-shadow: 0 0 5px rgba(150, 40, 40, 0.3);
+    outline: none;
+  }
+
+  input.ng-invalid.ng-touched::placeholder{
+    color: rgb(223, 8, 8);
+  }
   
   input:focus {
     border: 2px solid rgb(112, 179, 255) ;
@@ -51,6 +61,7 @@
   
   label {
     font-size: 0.9rem;
+    margin-bottom: 0.2rem;
   }
 
   .form-actions button {
@@ -66,4 +77,12 @@
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center; 
+  }
+
+  .disabled-button {
+    cursor: not-allowed !important;
+  }
+
+  .enabled-button {
+    cursor: pointer !important;
   }

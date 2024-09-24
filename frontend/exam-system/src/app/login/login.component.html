@@ -10,15 +10,20 @@
           <div class="form-group">
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" placeholder="Default Input" ngModel email required>
+            <app-error-message errorMessage="Please enter a valid email address"  *ngIf="isControlInvalid(form,'email')"></app-error-message>
           </div>
 
           <div class="form-group">
             <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="Subject" ngModel>
+            <input type="text" id="subject" name="subject" placeholder="Subject" ngModel required>
+            <app-error-message errorMessage="Please enter a valid subject"  *ngIf="isControlInvalid(form,'subject')"></app-error-message>
           </div>
 
           <div class="form-actions">
-              <button [routerLink]="['./','questions']">Login</button>
+              <button [disabled]="form?.invalid" [ngClass]="{
+                'disabled-button': form?.invalid,
+                'enabled-button': form?.valid
+              }">Login</button>
           </div>
       </form>
     </section>
