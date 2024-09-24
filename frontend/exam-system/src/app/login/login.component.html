@@ -16,8 +16,9 @@
 
           <div class="form-group">
             <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="Subject" ngModel required>
+            <input type="text" id="subject" name="subject" placeholder="Subject" ngModel required (input)="onSubjectNameChanged()">
             <app-error-message errorMessage="Please enter a valid subject."  *ngIf="isControlInvalid(form,'subject')"></app-error-message>
+            <app-error-message errorMessage="Subject name not found."  *ngIf="!subjectNameExists"></app-error-message>
           </div>
 
           <div class="form-actions">
