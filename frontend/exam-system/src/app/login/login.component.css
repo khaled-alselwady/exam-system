@@ -53,8 +53,8 @@
     font-size: 0.9rem;
   }
 
-  .form-actions a {
-    display: block;
+  .form-actions button {
+    width: 100%;
     background-color: red;
     text-decoration: none;
     color: white;

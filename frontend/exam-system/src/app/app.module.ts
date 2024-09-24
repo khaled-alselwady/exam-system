@@ -8,6 +8,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { ResultComponent } from './result/result.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { ErrorMessageComponent } from './shared/error-message/error-message.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     QuestionsComponent,
     HeaderComponent,
-    ResultComponent
+    ResultComponent,
+    ErrorMessageComponent
   ],
   imports: [
     BrowserModule,
