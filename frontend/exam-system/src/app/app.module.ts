@@ -6,7 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { QuestionsComponent } from './questions/questions.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ResultComponent } from './result/result.component';
-import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
-    
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

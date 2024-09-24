@@ -9,16 +9,16 @@
       <form action="">
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="Default Input" >
+            <input type="email" id="email" placeholder="Default Input" ngModel email required>
           </div>
 
           <div class="form-group">
             <label for="subject">Subject</label>
-            <input type="text" id="subject" placeholder="Subject">
+            <input type="text" id="subject" placeholder="Subject" ngModel>
           </div>
 
           <div class="form-actions">
-              <a href="page2.html">Login</a>
+              <a [routerLink]="['./','questions']">Login</a>
           </div>
       </form>
     </section>
