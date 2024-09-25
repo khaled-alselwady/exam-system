@@ -44,6 +44,18 @@ namespace ExamSystem.Services
             }
         }
 
+        public async Task<Student> FindAsync(string email)
+        {
+            try
+            {
+                return await _context.Students.AsNoTracking().FirstOrDefaultAsync(s => s.Email == email);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while finding the student with email {email}.", ex);
+            }
+        }
+
         public async Task<Student> AddAsync(Student newStudent)
         {
             try

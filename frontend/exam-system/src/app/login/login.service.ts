@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Student } from "../models/student.model";
 
 @Injectable({providedIn: 'root'})
 export class LoginService {

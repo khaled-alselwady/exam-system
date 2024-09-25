@@ -41,7 +41,7 @@
     font-size: 1rem;
     border-radius: 0.3rem;
     border: 1px solid rgba(128, 128, 128, 0.371);
-  
+    width: 20rem;
   }
 
   input.ng-invalid.ng-touched {
@@ -85,4 +85,10 @@
 
   .enabled-button {
     cursor: pointer !important;
+  }
+
+  @media(max-width: 944px) {
+    .login-main {
+      flex-direction: column;
+    }
   }

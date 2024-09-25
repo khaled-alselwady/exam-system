@@ -33,7 +33,7 @@ namespace ExamSystem.API.Controllers
         }
 
         [HttpGet]
-        [Route("{id:int}", Name = "FindStudentById")]
+        [Route("findById/{id:int}", Name = "FindStudentById")]
         public async Task<IHttpActionResult> Find(int id)
         {
             try
@@ -44,6 +44,21 @@ namespace ExamSystem.API.Controllers
             catch (Exception ex)
             {
                 return InternalServerError(new Exception($"An error occurred while finding the student with ID {id}.", ex));
+            }
+        }
+
+        [HttpGet]
+        [Route("findByEmail", Name = "FindStudentByEmail")]
+        public async Task<IHttpActionResult> Find([FromUri] string email)
+        {
+            try
+            {
+                var student = await _studentService.FindAsync(email);
+                return student != null ? (IHttpActionResult)Ok(student) : NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"An error occurred while finding the student with email {email}.", ex));
             }
         }
 
