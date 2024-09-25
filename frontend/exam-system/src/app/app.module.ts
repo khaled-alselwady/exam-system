@@ -10,6 +10,8 @@ import { QuestionsComponent } from './questions/questions.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ResultComponent } from './result/result.component';
 import { ErrorMessageComponent } from './shared/error-message/error-message.component';
+import { QuestionComponent } from './questions/question/question.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { ErrorMessageComponent } from './shared/error-message/error-message.comp
     QuestionsComponent,
     HeaderComponent,
     ResultComponent,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    QuestionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
   exports: [
     FormsModule,

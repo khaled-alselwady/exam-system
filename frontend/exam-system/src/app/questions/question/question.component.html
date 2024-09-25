@@ -1,0 +1,10 @@
+<section>
+    <p class="question-title">{{questionTitle}}</p>
+    <form class="options-container">
+
+        <div class="option" *ngFor="let choice of choices; let i = index">
+            <input type="radio" [name]="'question' + questionId" [id]="choice + i + questionId" [(ngModel)]="selectedAnswer" [value]="choice" [ngModelOptions]="{ standalone: true }">
+            <label [for]="choice + i + questionId">{{choice}}</label>
+        </div>
+    </form> 
+</section>

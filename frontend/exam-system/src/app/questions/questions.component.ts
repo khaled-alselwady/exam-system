@@ -13,6 +13,7 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   totalSeconds = 900; // Total seconds (15 * 60)
   questionCount = 0;
   subjectServiceSub: Subscription;
+selectedAnswers: any;
 
   constructor(private subjectService: SubjectService) { }
 
