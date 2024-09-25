@@ -1,4 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SubjectService } from '../subject.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-questions',
@@ -7,15 +9,23 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class QuestionsComponent implements OnInit, OnDestroy {
   private timer: any;
-  timeLeft: string = '00:15:00'; 
-  totalSeconds: number = 900; // Total seconds (15 * 60)
-  constructor() { }
+  timeLeft = '00:15:00'; 
+  totalSeconds = 900; // Total seconds (15 * 60)
+  questionCount = 0;
+  subjectServiceSub: Subscription;
+
+  constructor(private subjectService: SubjectService) { }
 
   ngOnInit(): void {
     this.startTimer();
+   this.subjectServiceSub = this.subjectService.currentSubject$.subscribe(subject => {
+      this.getQuestionCountBySpecificSubject(subject?.Id);
+    })
+    
   }
 
   ngOnDestroy(): void {
+    this.subjectServiceSub?.unsubscribe();
     if (this.timer) {
       clearInterval(this.timer);
     }
@@ -43,5 +53,11 @@ export class QuestionsComponent implements OnInit, OnDestroy {
 
   padZero(num: number): string {
     return num < 10 ? '0' + num : num.toString();
+  }
+
+  private getQuestionCountBySpecificSubject(subjectId: number) {
+    this.subjectService.getQuestionCountBySpecificSubject(subjectId).subscribe(count => {
+      this.questionCount = count;
+    });
   }
 }

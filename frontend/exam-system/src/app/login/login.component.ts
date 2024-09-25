@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { forkJoin } from 'rxjs';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { SubjectService } from '../subject.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import { catchError } from 'rxjs/operators';
 export class LoginComponent {
   constructor(private loginService:LoginService,
               private studentService: StudentService,
+              private subjectService: SubjectService,
               private router: Router) { }
 
   emailExists: boolean = true;
@@ -22,17 +24,17 @@ export class LoginComponent {
 
   onSubmit(formData: NgForm) {
     const emailCheck$ = this.doesEmailExist(formData?.value.email);
-  
     const subjectCheck$ = this.doesSubjectNameExist(formData?.value.subject);
-
     const student$ = this.findStudentByEmail(formData?.value.email);
+    const subject$ = this.findSubjectByName(formData?.value.subject);
   
-    forkJoin([emailCheck$, subjectCheck$, student$]).subscribe(([emailExists, subjectExists, student]) => {
+    forkJoin([emailCheck$, subjectCheck$, student$, subject$]).subscribe(([emailExists, subjectExists, student, subject]) => {
       this.emailExists = emailExists;
       this.subjectNameExists = subjectExists;
   
-      if (this.emailExists && this.subjectNameExists && student) {
+      if (this.emailExists && this.subjectNameExists && student && subject) {
         this.studentService.currentStudent$?.next(student);
+        this.subjectService.currentSubject$?.next(subject);
         this.router.navigate(['/questions']);
       }
     });
@@ -57,6 +59,15 @@ export class LoginComponent {
         return of(null);
       })
     );
+  }
+
+  private findSubjectByName(subjectName: string) {
+    return this.subjectService.findByName(subjectName).pipe(
+      catchError(error => {
+        this.subjectService.currentSubject$.next(null);
+        return of(null);
+      })
+    )
   }
 
   private doesEmailExist(email: string) {

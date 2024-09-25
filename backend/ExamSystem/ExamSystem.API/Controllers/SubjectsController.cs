@@ -34,7 +34,7 @@ namespace ExamSystem.API.Controllers
 
         [HttpGet]
         [Route("{id:int}", Name = "FindSubjectById")]
-        public async Task<IHttpActionResult> Find(int id)
+        public async Task<IHttpActionResult> Find(byte id)
         {
             try
             {
@@ -44,6 +44,21 @@ namespace ExamSystem.API.Controllers
             catch (Exception ex)
             {
                 return InternalServerError(new Exception($"An error occurred while finding the subject with ID {id}.", ex));
+            }
+        }
+
+        [HttpGet]
+        [Route("findByName", Name = "FindSubjectByName")]
+        public async Task<IHttpActionResult> Find(string name)
+        {
+            try
+            {
+                var subject = await _subjectService.FindAsync(name);
+                return subject != null ? (IHttpActionResult)Ok(subject) : NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception($"An error occurred while finding the subject with name {name}.", ex));
             }
         }
 
@@ -71,7 +86,7 @@ namespace ExamSystem.API.Controllers
 
         [HttpPut]
         [Route("{id:int}")]
-        public async Task<IHttpActionResult> Update(int id, [FromBody] Subject updatedSubject)
+        public async Task<IHttpActionResult> Update(byte id, [FromBody] Subject updatedSubject)
         {
             if (!ModelState.IsValid)
             {
@@ -91,7 +106,7 @@ namespace ExamSystem.API.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
-        public async Task<IHttpActionResult> Delete(int id)
+        public async Task<IHttpActionResult> Delete(byte id)
         {
             try
             {
@@ -106,7 +121,7 @@ namespace ExamSystem.API.Controllers
 
         [HttpGet]
         [Route("existsById")]
-        public async Task<IHttpActionResult> ExistsById([FromUri] int id)
+        public async Task<IHttpActionResult> ExistsById([FromUri] byte id)
         {
             try
             {
@@ -136,7 +151,7 @@ namespace ExamSystem.API.Controllers
 
         [HttpGet]
         [Route("questions")]
-        public async Task<IHttpActionResult> GetAllQuestions(int id)
+        public async Task<IHttpActionResult> GetAllQuestions(byte id)
         {
             try
             {
@@ -146,6 +161,21 @@ namespace ExamSystem.API.Controllers
             catch (Exception ex)
             {
                 return InternalServerError(new Exception("An error occurred while retrieving questions.", ex));
+            }
+        }
+
+        [HttpGet]
+        [Route("count-questions/{id}")]
+        public async Task<IHttpActionResult> GetQuestionsCountForSpecificSubject(byte id)
+        {
+            try
+            {
+                var questions = await _subjectService.GetQuestionsCountForSpecificSubjectAsync(id);
+                return Ok(questions);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(new Exception("An error occurred while retrieving questions count.", ex));
             }
         }
     }

@@ -31,15 +31,31 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<Subject> FindAsync(int id)
+        public async Task<Subject> FindAsync(byte id)
         {
             try
             {
-                return await _context.Subjects.AsNoTracking().FirstOrDefaultAsync(s => s.Id == id);
+                return await _context.Subjects
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(s => s.Id == id);
             }
             catch (Exception ex)
             {
                 throw new Exception($"An error occurred while finding the subject with ID {id}.", ex);
+            }
+        }
+
+        public async Task<Subject> FindAsync(string name)
+        {
+            try
+            {
+                return await _context.Subjects
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(s => s.Name.ToLower() == name.ToLower());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"An error occurred while finding the subject with name {name}.", ex);
             }
         }
 
@@ -64,7 +80,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<Subject> UpdateAsync(int id, Subject updatedSubject)
+        public async Task<Subject> UpdateAsync(byte id, Subject updatedSubject)
         {
             try
             {
@@ -96,7 +112,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<bool> RemoveAsync(int id)
+        public async Task<bool> RemoveAsync(byte id)
         {
             try
             {
@@ -109,7 +125,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<bool> ExistsByIdAsync(int id)
+        public async Task<bool> ExistsByIdAsync(byte id)
         {
             try
             {
@@ -145,7 +161,7 @@ namespace ExamSystem.Services.Subjects
             }
         }
 
-        public async Task<List<Question>> GetAllQuestionAsync(int id)
+        public async Task<List<Question>> GetAllQuestionAsync(byte id)
         {
             var questions = await _context.Questions
                                 .AsNoTracking()
@@ -153,6 +169,15 @@ namespace ExamSystem.Services.Subjects
                                 .ToListAsync();
 
             return questions;
+        }
+
+        public async Task<short> GetQuestionsCountForSpecificSubjectAsync(byte id)
+        {
+            var countQuestions = await _context.Questions
+                                    .AsNoTracking()
+                                    .CountAsync(q => q.SubjectId == id);
+
+            return (short)countQuestions;
         }
     }
 }
