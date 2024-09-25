@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Question } from 'src/app/models/question.model';
 
 @Component({
   selector: 'app-question',
@@ -6,17 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
- @Input() questionTitle: string;
- @Input() choices: string[] = [];
- @Input() questionId: number;
- @Input() selectedAnswers = {};
+  @Input() questionNumber: number;
+  @Input() question: Question;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log('Question Title: ', this.questionTitle);
-    console.log('Choices: ', this.choices);
-    console.log('Question ID: ', this.questionId);
+    console.log(this.question);
   }
 
 }

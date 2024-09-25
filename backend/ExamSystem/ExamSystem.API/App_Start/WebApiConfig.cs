@@ -13,6 +13,9 @@ namespace ExamSystem.API
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
 
+            // Configure JSON formatter
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

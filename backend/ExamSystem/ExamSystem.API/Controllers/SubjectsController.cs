@@ -150,7 +150,7 @@ namespace ExamSystem.API.Controllers
         }
 
         [HttpGet]
-        [Route("questions")]
+        [Route("questions/{id}")]
         public async Task<IHttpActionResult> GetAllQuestions(byte id)
         {
             try

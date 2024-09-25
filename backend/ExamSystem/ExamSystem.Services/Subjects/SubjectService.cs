@@ -165,6 +165,7 @@ namespace ExamSystem.Services.Subjects
         {
             var questions = await _context.Questions
                                 .AsNoTracking()
+                                .Include(q => q.Options)
                                 .Where(q => q.SubjectId == id)
                                 .ToListAsync();
 

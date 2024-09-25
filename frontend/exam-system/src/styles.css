@@ -7,15 +7,13 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: rgb(238, 238, 238);
+    background-color: #F4F7FC;
   }
   
   p {
     margin: 0;
     padding: 0;
   }
-
-  
 
   .student-name {
     font-size: 1.2rem;

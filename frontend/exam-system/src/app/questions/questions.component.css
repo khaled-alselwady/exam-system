@@ -11,13 +11,7 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
     width: 100%;
-  }
-  
-  .question-header {
-    margin: 0;
-    color: red;
   }
   
   .exam-content {
@@ -92,5 +86,4 @@ main {
     font-weight: bold;
     transition: all 0.3s ease;
     text-align: center;
-    
   }

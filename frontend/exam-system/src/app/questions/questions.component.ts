@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SubjectService } from '../subject.service';
 import { Subscription } from 'rxjs';
+import { Question } from '../models/question.model';
+import { QuestionsService } from './questions.service';
 
 @Component({
   selector: 'app-questions',
@@ -12,24 +14,41 @@ export class QuestionsComponent implements OnInit, OnDestroy {
   timeLeft = '00:15:00'; 
   totalSeconds = 900; // Total seconds (15 * 60)
   questionCount = 0;
-  subjectServiceSub: Subscription;
-selectedAnswers: any;
+  questions: Question[] = [];
+  subscriptions: Subscription[] = [];
+  subjectName: string;
 
-  constructor(private subjectService: SubjectService) { }
+  constructor(private subjectService: SubjectService,
+              private questionsService: QuestionsService
+  ) { }
 
   ngOnInit(): void {
-    this.startTimer();
-   this.subjectServiceSub = this.subjectService.currentSubject$.subscribe(subject => {
-      this.getQuestionCountBySpecificSubject(subject?.Id);
-    })
-    
+   this.startTimer();
+
+   this.subscriptions.push(this.subscribeToCurrentSubject());
+
+    this.subscriptions.push(this.subscribeToQuestions());
   }
 
   ngOnDestroy(): void {
-    this.subjectServiceSub?.unsubscribe();
+   this.subscriptions?.forEach(sub => sub.unsubscribe());
     if (this.timer) {
       clearInterval(this.timer);
     }
+  }
+
+  private subscribeToCurrentSubject() {
+    return this.subjectService.currentSubject$.subscribe(subject => {
+      this.getQuestionsBySpecificSubject(subject?.Id);
+      this.getQuestionCountBySpecificSubject(subject?.Id);
+      this.subjectName = subject.Name;
+    });
+  }
+
+  private subscribeToQuestions() {
+    return this.questionsService.questions$.subscribe(questions => {
+      this.questions = questions;
+      });
   }
 
   startTimer(): void {
@@ -60,5 +79,11 @@ selectedAnswers: any;
     this.subjectService.getQuestionCountBySpecificSubject(subjectId).subscribe(count => {
       this.questionCount = count;
     });
+  }
+
+  private getQuestionsBySpecificSubject(subjectId: number) {
+  this.subjectService.getQuestionsBySubjectId(subjectId).subscribe(questions => {
+    this.questionsService.questions$.next(questions);
+  }) 
   }
 }

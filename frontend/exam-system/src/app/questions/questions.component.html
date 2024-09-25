@@ -7,7 +7,7 @@
           <img src="../../assets/icon-grade-50.png" alt="Exam Icon">
         </div>
 
-        <span class="title">Math Exam</span>
+        <span class="title">{{subjectName}} Exam</span>
       </div> 
 
       <span class="time-left-container">Time left <span class="time-left">{{timeLeft}}</span> </span>
@@ -16,51 +16,10 @@
     </section>
 
     <section class="exam-content">
-      <h4 class="question-header">Question Number 1</h4>
+          
 
-      <hr>     
-
-      <app-question [questionId]="1" questionTitle="What is one of the big differences between traditional media and social media?"
-      [choices]="[
-      'a. participatory production',
-      'b. social media reaches only a few people at a time',
-      'c. the management structure of the companies',
-      'd. traditional media offers no way for audiences to communicate with media producer']">
-
+    <app-question *ngFor="let question of questions; let i = index" [question]="question" [questionNumber]="i + 1">
     </app-question>
-
-      <app-question [questionId]="2" questionTitle="What is one of the big differences between traditional media and social media?"
-      [choices]="[
-      'a. participatory production',
-      'b. social media reaches only a few people at a time',
-      'c. the management structure of the companies',
-      'd. traditional media offers no way for audiences to communicate with media producer']">
-      </app-question>
-
-      <app-question [questionId]="3" questionTitle="What is one of the big differences between traditional media and social media?"
-      [choices]="[
-      'a. participatory production',
-      'b. social media reaches only a few people at a time',
-      'c. the management structure of the companies',
-      'd. traditional media offers no way for audiences to communicate with media producer']">
-      </app-question>
-
-      <app-question [questionId]="4" questionTitle="What is one of the big differences between traditional media and social media?"
-      [choices]="[
-      'a. participatory production',
-      'b. social media reaches only a few people at a time',
-      'c. the management structure of the companies',
-      'd. traditional media offers no way for audiences to communicate with media producer']">
-      </app-question>
-
-      <app-question [questionId]="5" questionTitle="What is one of the big differences between traditional media and social media?"
-      [choices]="[
-      'a. participatory production',
-      'b. social media reaches only a few people at a time',
-      'c. the management structure of the companies',
-      'd. traditional media offers no way for audiences to communicate with media producer']">
-      </app-question>
-
     </section>
 
     <div class="actions">
